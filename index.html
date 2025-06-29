@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAXMI LOTTERY - Premium Terms & Conditions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-light: #ffd700;
+            --gold-medium: #daa520;
+            --gold-dark: #b8860b;
+            --dark-bg: #0c0a0a;
+            --darker-bg: #080606;
+            --glass-bg: rgba(15, 14, 14, 0.7);
+            --text-light: #f5f5f5;
+            --text-gold: #e6c200;
+            --success-green: #4CAF50;
+            --error-red: #ff5252;
+            --electric-cyan: #00fff7;
+            --lime-neon: #bfff00;
+            --magenta: #ff1eff;
+            --deep-violet: #1a0a2e;
+            --neon-purple: #b300ff;
+        }
+
+        body {
+            background: radial-gradient(circle at center, var(--darker-bg) 0%, var(--dark-bg) 70%);
+            color: var(--text-light);
+            font-family: 'Open Sans', sans-serif;
+            min-height: 100vh;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 120px; /* Space for fixed footer */
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(218, 165, 32, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(184, 134, 11, 0.1) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        /* Sticky Note with Animations */
+        .notice-badge {
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            background: linear-gradient(135deg, rgba(26, 10, 46, 0.9), rgba(15, 5, 35, 0.95));
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--electric-cyan);
+            border-radius: 20px;
+            padding: 15px 25px;
+            font-size: 0.95rem;
+            color: var(--lime-neon);
+            z-index: 900;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 247, 0.6),
+                0 0 40px rgba(191, 255, 0, 0.3),
+                0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 300px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, 
+                       squishLoop 4s infinite ease-in-out 1s;
+            transform-origin: center;
+        }
+
+        .notice-badge::before {
+            content: '💡';
+            font-size: 1.4rem;
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        .header {
+            text-align: center;
+            padding: 15px 0 10px;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .logo {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.5),
+                0 0 20px rgba(255, 215, 0, 0.3);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            animation: glow 2s infinite alternate;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-gold);
+            margin-bottom: 10px;
+        }
+
+        .header::after {
+            content: '';
+            display: block;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-medium), transparent);
+            margin: 8px auto 0;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        /* UPGRADED TICKET PRIZE SECTION WITH ANIMATION */
+        .ticket-prize-section {
+            background: linear-gradient(135deg, rgba(26, 10, 46, 0.8), rgba(15, 5, 35, 0.9));
+            border: 1px solid var(--electric-cyan);
+            border-radius: 12px;
+            padding: 20px 15px;
+            max-width: 500px;
+            margin: 0 auto 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 247, 0.6),
+                0 0 40px rgba(255, 30, 255, 0.4),
+                inset 0 0 15px rgba(191, 255, 0, 0.3);
+            z-index: 2;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: popIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation-delay: 0.5s;
+        }
+
+        .ticket-prize-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .ticket-prize-section div {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            margin: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 1.1rem;
+        }
+
+        .ticket-prize-section .ticket-price {
+            color: var(--electric-cyan);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-shadow: 
+                0 0 10px rgba(0, 255, 247, 0.8),
+                0 0 20px rgba(0, 255, 247, 0.4);
+        }
+
+        .ticket-prize-section .ticket-type {
+            color: var(--lime-neon);
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 8px rgba(191, 255, 0, 0.7),
+                0 0 15px rgba(191, 255, 0, 0.3);
+        }
+
+        .ticket-prize-section .prize-item {
+            color: var(--magenta);
+            font-size: 1.2rem;
+            margin: 12px 0;
+            text-shadow: 
+                0 0 8px rgba(255, 30, 255, 0.7),
+                0 0 15px rgba(255, 30, 255, 0.3);
+        }
+
+        .ticket-prize-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent,
+                rgba(0, 255, 247, 0.3),
+                rgba(191, 255, 0, 0.2),
+                rgba(255, 30, 255, 0.3),
+                transparent 70%
+            );
+            animation: rotate 6s linear infinite;
+            z-index: 1;
+        }
+
+        .ticket-prize-section::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: linear-gradient(135deg, rgba(26, 10, 46, 0.85), rgba(15, 5, 35, 0.95));
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 0 auto;
+            flex: 1;
+            position: relative;
+        }
+
+        .terms-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            overflow-y: auto;
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.5),
+                inset 0 0 15px rgba(218, 165, 32, 0.1);
+            flex-grow: 1;
+            position: relative;
+            margin-bottom: 15px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .terms-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .terms-container::-webkit-scrollbar-track {
+            background: rgba(20, 20, 20, 0.5);
+        }
+
+        .terms-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--gold-medium), var(--gold-dark));
+            border-radius: 3px;
+        }
+
+        .terms-content {
+            line-height: 1.6;
+            padding-right: 10px;
+        }
+
+        .terms-content h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.7rem;
+            color: var(--gold-light);
+            margin: 15px 0 12px;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.8),
+                0 0 8px rgba(255, 215, 0, 0.3);
+            position: relative;
+            padding-bottom: 6px;
+        }
+
+        .terms-content h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-medium), transparent);
+        }
+
+        .terms-content h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-gold);
+            margin: 20px 0 12px;
+            text-shadow: 
+                1px 1px 3px rgba(0, 0, 0, 0.8),
+                0 0 6px rgba(255, 215, 0, 0.2);
+        }
+
+        .terms-content p {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .terms-content strong {
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        .terms-content ul {
+            padding-left: 20px;
+            margin: 12px 0;
+        }
+
+        .terms-content li {
+            margin-bottom: 8px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .terms-content li::before {
+            content: '•';
+            color: var(--gold-medium);
+            position: absolute;
+            left: -15px;
+        }
+
+        .authorized-section {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(218, 165, 32, 0.4);
+        }
+
+        .authorized-section p {
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        /* FIXED FOOTER */
+        .footer {
+            background: rgba(12, 10, 10, 0.95);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 30px);
+            max-width: 800px;
+            z-index: 1000;
+        }
+
+        .accept-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-container {
+            position: relative;
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+        }
+
+        .checkbox-container input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 22px;
+            height: 22px;
+            background: rgba(40, 40, 40, 0.8);
+            border: 2px solid var(--gold-medium);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-container input:checked ~ .checkmark {
+            background: var(--gold-medium);
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 7px;
+            top: 3px;
+            width: 5px;
+            height: 9px;
+            border: solid rgba(15, 15, 15, 0.9);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .checkbox-container input:disabled ~ .checkmark {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .accept-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .btn-accept {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold-medium), var(--gold-light));
+            color: #1a1a1a;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 3px 10px rgba(218, 165, 32, 0.3);
+        }
+
+        .btn-accept:disabled {
+            background: linear-gradient(135deg, #3a3a3a, #2a2a2a);
+            color: #888;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-accept:not(:disabled):hover {
+            transform: translateY(-1px);
+            box-shadow: 
+                0 4px 15px rgba(218, 165, 32, 0.4),
+                0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-accept:not(:disabled):active {
+            transform: translateY(1px);
+        }
+
+        .btn-accept::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.4s;
+        }
+
+        .btn-accept:not(:disabled):hover::before {
+            left: 100%;
+        }
+
+        .btn-shake {
+            animation: shake 0.4s ease;
+        }
+
+        .terms-end {
+            text-align: center;
+            color: var(--gold-medium);
+            font-size: 0.85rem;
+            padding: 12px 0;
+            font-style: italic;
+            opacity: 0.7;
+            margin-top: 15px;
+        }
+
+        /* Animations */
+        @keyframes glow {
+            from {
+                text-shadow: 
+                    0 0 5px rgba(255, 215, 0, 0.5),
+                    0 0 10px rgba(255, 215, 0, 0.3);
+            }
+            to {
+                text-shadow: 
+                    0 0 10px rgba(255, 215, 0, 0.7),
+                    0 0 20px rgba(255, 215, 0, 0.5);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-8px); }
+            80% { transform: translateX(8px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Pop-in animation */
+        @keyframes popIn {
+            0% { 
+                transform: scale(0.7); 
+                opacity: 0; 
+            }
+            70% { 
+                transform: scale(1.05); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: scale(1); 
+                opacity: 1; 
+            }
+        }
+
+        /* Squish loop animation */
+        @keyframes squishLoop {
+            0%, 100% { 
+                transform: scale(1); 
+            }
+            50% { 
+                transform: scale(1.05, 0.95); 
+            }
+        }
+
+        /* Glow pulse for icon */
+        @keyframes glowPulse {
+            0% {
+                text-shadow: 0 0 5px rgba(191, 255, 0, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 15px rgba(191, 255, 0, 0.9), 0 0 25px rgba(191, 255, 0, 0.7);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 0 15px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .terms-container {
+                padding: 18px;
+            }
+            
+            .terms-content h1 {
+                font-size: 1.4rem;
+            }
+            
+            .terms-content h2 {
+                font-size: 1.1rem;
+            }
+            
+            .footer {
+                padding: 12px;
+                bottom: 15px;
+            }
+
+            .ticket-prize-section div {
+                font-size: 1rem;
+            }
+
+            .notice-badge {
+                bottom: 130px;
+                right: 15px;
+                left: 15px;
+                max-width: none;
+                margin: 0 auto;
+                font-size: 0.85rem;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+                padding-bottom: 110px;
+            }
+            
+            .logo {
+                font-size: 1.7rem;
+            }
+            
+            .terms-container {
+                padding: 15px;
+            }
+            
+            .terms-content h1 {
+                font-size: 1.2rem;
+            }
+            
+            .accept-container {
+                gap: 8px;
+            }
+            
+            .accept-text {
+                font-size: 0.8rem;
+            }
+            
+            .btn-accept {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .ticket-prize-section {
+                padding: 15px 10px;
+            }
+            
+            .ticket-prize-section div {
+                font-size: 0.9rem;
+            }
+
+            .notice-badge {
+                bottom: 120px;
+                right: 10px;
+                left: 10px;
+                padding: 10px 15px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Notice Badge -->
+    <div class="notice-badge">
+        Click the "Accept" button below to buy your ticket from WhatsApp.
+    </div>
+
+    <div class="header fade-in">
+        <div class="logo">LAXMI LOTTERY<span>™</span></div>
+        <div class="subtitle">Terms & Conditions / Legal Disclaimer</div>
+    </div>
+
+    <!-- Ticket Prize Section with Pop-in Animation -->
+    <div class="ticket-prize-section">
+        <div class="ticket-prize-content">
+            <div class="ticket-price">TICKET PRIZE - ₹ 49</div>
+            <div class="ticket-type">TICKET TYPE - REGULAR</div>
+            <div class="prize-item">1ST PRIZE - ₹ 300</div>
+            <div class="prize-item">2ND PRIZE - ₹ 150</div>
+            <div class="prize-item">3RD PRIZE - ₹ 75</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="terms-container" id="termsContainer">
+            <div class="terms-content" id="termsContent">
+                <h1>TERMS & CONDITIONS / LEGAL DISCLAIMER</h1>
+                <p><strong>Effective Date:</strong> {17-06-25}</p>
+
+                <h2>1. INTRODUCTION</h2>
+                <p><strong>Laxmi Lottery™</strong> is a private, digital, voluntary reward-based giveaway initiative. It operates exclusively via digital platforms (e.g., Instagram) and uses manual payment mechanisms (e.g., UPI). This initiative is designed to function under Indian and international laws concerning promotional contests, sweepstakes, and entertainment-based schemes. This activity does <strong>not</strong> constitute a state-run lottery or gambling under any applicable legislation.</p>
+
+                <h2>2. LEGAL NATURE OF THE CAMPAIGN</h2>
+                <p>This giveaway is organized under the premise of a <strong>Promotional Skill-Based Reward System</strong>, which includes:</p>
+                <ul>
+                    <li>Random draws for participants who voluntarily enter.</li>
+                    <li>No guaranteed returns or profits.</li>
+                    <li>Minimal entry fee (INR 49) used for prize funding, promotional reach, and operational management.</li>
+                </ul>
+                <p>This operation is <strong>NOT</strong> covered under:</p>
+                <ul>
+                    <li>The Lotteries (Regulation) Act, 1998;</li>
+                    <li>The Public Gambling Act, 1867;</li>
+                    <li>The Prize Chits and Money Circulation Schemes (Banning) Act, 1978.</li>
+                </ul>
+                <p>Instead, it is compliant with:</p>
+                <ul>
+                    <li><strong>Article 19(1)(g)</strong> of the Constitution of India (Right to Practice Any Profession);</li>
+                    <li><strong>Section 30 of the Indian Contract Act, 1872</strong> – which prohibits only certain wagering agreements;</li>
+                    <li><strong>Information Technology Act, 2000</strong> and <strong>IT Rules, 2021</strong> for digital communications;</li>
+                    <li><strong>GST Act, 2017</strong> if turnover exceeds applicable thresholds.</li>
+                </ul>
+                <p>Internationally, Laxmi Lottery adheres to the core tenets of:</p>
+                <ul>
+                    <li><strong>FTC Guidelines on Online Promotions</strong> (USA);</li>
+                    <li><strong>UK Gambling Commission promotional draw exemptions</strong>;</li>
+                    <li><strong>EU Directive 2005/29/EC</strong> (Unfair Commercial Practices) – by ensuring transparency, fairness, and no deception.</li>
+                </ul>
+
+                <h2>3. ELIGIBILITY</h2>
+                <ul>
+                    <li>Only individuals <strong>18 years or older</strong> may participate.</li>
+                    <li>Participants must be Indian residents or comply with their local jurisdiction's laws.</li>
+                    <li>By entering, the participant consents that they are not violating any local/state/international law.</li>
+                </ul>
+
+                <h2>4. PARTICIPATION PROCESS</h2>
+                <ul>
+                    <li>Users voluntarily pay ₹49 per entry via UPI (or similar).</li>
+                    <li>Each confirmed participant is assigned a <strong>unique ticket number</strong>.</li>
+                    <li>Winners are selected transparently via randomization tools.</li>
+                </ul>
+                <p>No refunds will be entertained once the entry is confirmed. Tickets are non-transferable and non-redeemable for cash (other than prize).</p>
+
+                <h2>5. PRIZES AND PAYOUTS</h2>
+                <ul>
+                    <li>Prize structure: 1st ₹300, 2nd ₹150, 3rd ₹75.</li>
+                    <li>Total prizes never exceed a fixed portion of collected funds.</li>
+                    <li>Payouts are done via UPI, and screenshots/proof are archived securely.</li>
+                    <li>Winners are notified privately and publicly (with consent).</li>
+                </ul>
+
+                <h2>6. TRANSPARENCY AND DATA</h2>
+                <ul>
+                    <li>All entries are recorded with participant names, UPI IDs, and transaction proofs.</li>
+                    <li>Data is stored in compliance with <strong>Section 72A of IT Act, 2000</strong>.</li>
+                    <li>User data will never be sold or misused.</li>
+                </ul>
+
+                <h2>7. WAIVER OF LIABILITY</h2>
+                <p>Laxmi Lottery and its owner/operator shall not be held liable for:</p>
+                <ul>
+                    <li>Platform outages (e.g., Instagram downtime);</li>
+                    <li>Failed UPI transactions from third parties;</li>
+                    <li>Technical errors beyond control;</li>
+                    <li>Participant misinterpretation or expectation mismatch.</li>
+                </ul>
+                <p>Any attempt to defame, sabotage, or falsely accuse the operations shall be legally challenged under:</p>
+                <ul>
+                    <li><strong>IPC Section 499 & 500</strong> (Defamation);</li>
+                    <li><strong>IPC Section 420</strong> (Cheating, if false allegations impact trust);</li>
+                    <li><strong>Section 66 of the IT Act, 2000</strong> (Cyber Offences).</li>
+                </ul>
+
+                <h2>8. LEGAL DISPUTES AND JURISDICTION</h2>
+                <ul>
+                    <li>All disputes shall first be attempted to resolve via mutual mediation.</li>
+                    <li>If unresolved, the matter shall be exclusively subject to the jurisdiction of <strong>Kolkata Civil Court</strong>, West Bengal, India.</li>
+                    <li>The owner reserves the right to modify or cancel the giveaway in case of legal notifications or policy changes.</li>
+                </ul>
+
+                <h2>9. ACCEPTANCE OF TERMS</h2>
+                <p>By participating in Laxmi Lottery™, you confirm that you:</p>
+                <ul>
+                    <li>Have read and understood these terms;</li>
+                    <li>Are voluntarily entering a promotional draw;</li>
+                    <li>Do not hold the organizers liable under any criminal or civil law, unless willful fraud is proven.</li>
+                </ul>
+
+                <div class="authorized-section">
+                    <p><strong>Authorized & Operated By:</strong></p>
+                    <p>MD. ZAIN ALI (Founder)</p>
+                    <p>Laxmi Lottery ™ - A Digital Reward-Based Entertainment Platform</p>
+                    <p>Contact: <a href="mailto:laxmirewards@gmail.com" style="color: var(--gold-light);">laxmirewards@gmail.com</a></p>
+                    <p>UPI ID: md.205@ptyes</p>
+                    <p>Date: 17-06-25</p>
+                </div>
+
+                <p><em>This document acts as a formal declaration of operational structure and intent, and shall be produced in court if required.</em></p>
+                
+                <div class="terms-end" id="termsEnd">END OF TERMS & CONDITIONS</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="accept-container">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="acceptCheckbox">
+                    <span class="checkmark"></span>
+                </label>
+                <span class="accept-text">I have read and accept the Terms and Conditions</span>
+            </div>
+            <button class="btn-accept" id="acceptButton" disabled>
+                Accept and get a chance to win ₹300
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const acceptCheckbox = document.getElementById('acceptCheckbox');
+            const acceptButton = document.getElementById('acceptButton');
+            
+            // Enable checkbox immediately
+            acceptCheckbox.disabled = false;
+            
+            // Enable button when checkbox is checked
+            acceptCheckbox.addEventListener('change', function() {
+                acceptButton.disabled = !this.checked;
+            });
+            
+            // Button click handler
+            acceptButton.addEventListener('click', function() {
+                if (!acceptCheckbox.checked) {
+                    alert('Please accept the terms and conditions');
+                    return;
+                }
+                // Redirect to WhatsApp
+                window.location.href = 'https://wa.me/+918240655186?text=Hii';
+            });
+        });
+    </script>
+</body>
+</html>
